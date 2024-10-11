@@ -1,0 +1,23 @@
+import java.util.Arrays;
+import java.util.List;
+
+public class NumberFinder {
+
+    public void numberList(String[] array){
+        String line = Arrays.toString(array);
+        String[] nums = line.substring(1, line.length()-1).split(", ");
+        List<String> slist = Arrays.asList(nums);
+
+        slist
+                .stream()
+                .map(Integer::parseInt)
+                .sorted()
+                .forEach(System.out::println);
+    }
+
+    public static void main(String[] args) {
+        NumberFinder nf = new NumberFinder();
+        String[] array = {"1, 2, 0", "4, 5", "13, 41"};
+        nf.numberList(array);
+    }
+}
