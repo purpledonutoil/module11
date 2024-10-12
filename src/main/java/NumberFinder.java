@@ -7,12 +7,17 @@ public class NumberFinder {
         String line = Arrays.toString(array);
         String[] nums = line.substring(1, line.length()-1).split(", ");
         List<String> slist = Arrays.asList(nums);
+        final String[] res = {new String()};
 
         slist
                 .stream()
                 .map(Integer::parseInt)
                 .sorted()
-                .forEach(System.out::println);
+                .forEach(s ->{
+                    res[0] += ", " + s;
+                });
+        String result = res[0].substring(2, res[0].length());
+        System.out.println(result);
     }
 
     public static void main(String[] args) {

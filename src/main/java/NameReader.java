@@ -1,6 +1,7 @@
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class NameReader {
     private String[] list;
@@ -15,14 +16,18 @@ public class NameReader {
     public void filterList(){
         readInput();
         List<String> flist = Arrays.asList(list);
-
+        final String[] res = {new String()};
         flist
                 .stream()
                 .filter(s -> {
                     int num = Integer.parseInt(s.split(". ")[0]);
                     return num%2==1;
                 })
-                .forEach(System.out::println);
+                .forEach(s ->{
+                    res[0] += ", " + s;
+                });
+        String result = res[0].substring(2, res[0].length());
+        System.out.println(result);
     }
 
     public static void main(String[] args) {

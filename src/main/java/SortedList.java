@@ -15,12 +15,17 @@ public class SortedList {
     public void sortedList(){
         readInput();
         List<String> slist = Arrays.asList(list);
+        final String[] res = {new String()};
 
         slist
                 .stream()
                 .map(s -> s.toUpperCase())
                 .sorted((s1, s2) -> s2.compareTo(s1))
-                .forEach(System.out::println);
+                .forEach(s ->{
+                    res[0] += ", " + s;
+                });
+        String result = res[0].substring(2, res[0].length());
+        System.out.println(result);
     }
 
     public static void main(String[] args) {
