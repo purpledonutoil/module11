@@ -16,18 +16,14 @@ public class NameReader {
     public void filterList(){
         readInput();
         List<String> flist = Arrays.asList(list);
-        final String[] res = {new String()};
-        flist
+        String list = flist
                 .stream()
                 .filter(s -> {
                     int num = Integer.parseInt(s.split(". ")[0]);
                     return num%2==1;
                 })
-                .forEach(s ->{
-                    res[0] += ", " + s;
-                });
-        String result = res[0].substring(2, res[0].length());
-        System.out.println(result);
+                .collect(Collectors.joining(", "));
+        System.out.println(list);
     }
 
     public static void main(String[] args) {

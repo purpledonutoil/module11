@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class NumberFinder {
 
@@ -7,17 +8,14 @@ public class NumberFinder {
         String line = Arrays.toString(array);
         String[] nums = line.substring(1, line.length()-1).split(", ");
         List<String> slist = Arrays.asList(nums);
-        final String[] res = {new String()};
 
-        slist
+        String list = slist
                 .stream()
                 .map(Integer::parseInt)
                 .sorted()
-                .forEach(s ->{
-                    res[0] += ", " + s;
-                });
-        String result = res[0].substring(2, res[0].length());
-        System.out.println(result);
+                .map(i -> i.toString())
+                .collect(Collectors.joining(", "));
+        System.out.println(list);
     }
 
     public static void main(String[] args) {
